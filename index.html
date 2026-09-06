@@ -627,7 +627,7 @@
         flex-shrink: 0;
       }
 
-      /* Tambahan Animasi Fade In */
+      /* Added Fade-In Animation */
       section {
         opacity: 0;
         transform: translateY(20px);
@@ -651,13 +651,60 @@
         background: var(--green);
         color: #fff;
         padding: 10px 18px;
-        border-radius: 8px; /* naikin dari 4px, biar seragam sama .btn dan .project-card yang pakai 6-10px */
+        border-radius: 8px;
         font-size: 13px;
         font-weight: 600;
-        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25); /* tambahin shadow biar kerasa "mengambang" di atas konten */
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
         display: none;
         animation: fadeIn 0.3s;
       }
+
+      .menu-toggle {
+        display: none;
+        background: none;
+        border: none;
+        color: var(--text);
+        cursor: pointer;
+        padding: 8px;
+      }
+
+      .menu-toggle svg { width: 24px; height: 24px; }
+
+      @media (max-width: 600px) {
+        .menu-toggle { display: block; }
+
+        .nav-links {
+          display: none;
+          position: absolute;
+          top: 56px;
+          left: 0;
+          width: 100%;
+          background: var(--nav-bg);
+          flex-direction: column;
+          gap: 0;
+          border-bottom: 1px solid var(--border);
+          padding: 10px 0;
+          backdrop-filter: blur(10px);
+        }
+
+        .nav-links.active {
+          display: flex;
+        }
+
+        .nav-links li { width: 100%; }
+
+        .nav-links a {
+          display: block;
+          padding: 15px 24px;
+          width: 100%;
+          font-size: 16px;
+        }
+
+        .nav-brand { font-size: 14px; }
+
+        #home { padding-top: 80px; }
+      }
+
       @keyframes fadeIn {
         from {
           opacity: 0;
@@ -703,32 +750,26 @@
     <nav>
       <span class="nav-brand">diah</span>
       <div style="display: flex; align-items: center; gap: 0">
-        <ul class="nav-links">
+        <button class="menu-toggle" id="menuToggle" aria-label="Open Menu">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="12" x2="21" y2="12"></line>
+            <line x1="3" y1="6" x2="21" y2="6"></line>
+            <line x1="3" y1="18" x2="21" y2="18"></line>
+          </svg>
+        </button>
+
+        <!-- Nav Links -->
+        <ul class="nav-links" id="navLinks">
           <li><a href="#home">Home</a></li>
           <li><a href="#about">About</a></li>
           <li><a href="#projects">Projects</a></li>
           <li><a href="#skills">Skills</a></li>
           <li><a href="#contact">Contact</a></li>
         </ul>
-        <button class="theme-toggle" id="themeToggle" aria-label="Toggle theme">
-          <!-- sun icon (shown in dark mode) -->
-          <svg
-            class="icon-sun"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path
-              d="M12 17a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0-13a1 1 0 0 0 1-1V2a1 1 0 0 0-2 0v1a1 1 0 0 0 1 1zm0 16a1 1 0 0 0-1 1v1a1 1 0 0 0 2 0v-1a1 1 0 0 0-1-1zM4.22 5.64a1 1 0 0 0 1.42-1.42L4.93 3.51a1 1 0 0 0-1.42 1.42l.71.71zm14.14 12.72a1 1 0 0 0-1.42 1.42l.71.71a1 1 0 1 0 1.42-1.42l-.71-.71zM3 12a1 1 0 0 0-1-1H1a1 1 0 0 0 0 2h1a1 1 0 0 0 1-1zm19 0a1 1 0 0 0 1 1h1a1 1 0 0 0 0-2h-1a1 1 0 0 0-1 1zm-2.78-7.07a1 1 0 0 0 1.42 1.42l.71-.71A1 1 0 1 0 20 4.93l-.78.78v.22zM4.22 18.36l-.71.71a1 1 0 1 0 1.42 1.42l.71-.71a1 1 0 0 0-1.42-1.42z"
-            />
-          </svg>
-          <!-- moon icon (shown in light mode) -->
-          <svg
-            class="icon-moon"
-            viewBox="0 0 24 24"
-            xmlns="http://www.w3.org/2000/svg"
-          >
-            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
-          </svg>
+
+        <button class="theme-toggle" id="themeToggle">
+          <svg class="icon-sun" viewBox="0 0 24 24"><path d="M12 17a5 5 0 1 0 0-10 5 5 0 0 0 0 10zm0-13V2m0 20v-1m-8-8H2m20 0h-1m-2.78-7.07l.71-.71M4.93 19.07l.71-.71m12.72 0l.71.71M4.93 4.93l.71.71"/></svg>
+          <svg class="icon-moon" viewBox="0 0 24 24"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
           <span id="themeLabel">Light</span>
         </button>
       </div>
@@ -746,8 +787,7 @@
       <div class="hero-ctas">
         <a href="#projects" class="btn btn-primary">View Projects</a>
 
-        <!-- TOMBOL CV BARU -->
-        <a href="link-ke-file-cv-kamu.pdf" target="_blank" class="btn btn-cv">
+        <a href="Diah-Fitrianingrum-CV.pdf" target="_blank" rel="noopener" class="btn btn-cv">
           <svg
             style="
               width: 14px;
@@ -1832,22 +1872,31 @@
     </footer>
 
     <script>
-      /* ── DARK / LIGHT TOGGLE (FIXED FOR DEFAULT DARK) ── */
+      /* ── DARK / LIGHT TOGGLE ── */
       const html = document.documentElement;
       const btn = document.getElementById("themeToggle");
       const lbl = document.getElementById("themeLabel");
+      const menuToggle = document.getElementById('menuToggle');
+      const navLinks = document.getElementById('navLinks');
 
-      // Load theme: Prioritaskan saved, kalau tidak ada default ke dark
       const currentTheme = localStorage.getItem("theme") || "dark";
       html.setAttribute("data-theme", currentTheme);
+
+      menuToggle.addEventListener('click', () => {
+        navLinks.classList.toggle('active');
+      });
 
       function syncLabel() {
         const isDark = html.getAttribute("data-theme") === "dark";
         lbl.textContent = isDark ? "Light" : "Dark";
-        // Update ikon atau style jika perlu di sini
       }
       syncLabel();
 
+      document.querySelectorAll('.nav-links a').forEach(link => {
+        link.addEventListener('click', () => {
+          navLinks.classList.remove('active');
+        });
+      });
       btn.addEventListener("click", () => {
         const next =
           html.getAttribute("data-theme") === "dark" ? "light" : "dark";
@@ -1882,12 +1931,12 @@
           setTimeout(() => {
             feedback.style.display = "none";
           }, 2000);
-          // Tetap buka email client setelah copy (opsional)
+          // Keep the email client open after copying (optional)
           window.location.href = `mailto:${email}`;
         });
       });
 
-      /* ── PROJECT FILTER & SVG ANIMATION (Tetap gunakan logika lama kamu) ── */
+      /* ── PROJECT FILTER & SVG ANIMATION ── */
       const filterBtns = document.querySelectorAll(".filter-btn");
       const cards = document.querySelectorAll(".project-card");
 

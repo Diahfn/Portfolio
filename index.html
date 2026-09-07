@@ -115,7 +115,7 @@
 
       /* SECTIONS */
       section {
-        max-width: 760px;
+        max-width: 900px;
         margin: 0 auto;
         padding: 80px 24px;
       }
@@ -492,7 +492,32 @@
         line-height: 1.3;
       }
 
-      /* ARCH DIAGRAM */
+      .hero-stats {
+        display: flex;
+        gap: 32px;
+        margin-top: 40px;
+        flex-wrap: wrap;
+      }
+      .stat-item {
+        display: flex;
+        flex-direction: column;
+      }
+      .stat-value {
+        font-size: 28px;
+        font-weight: 800;
+        color: var(--accent);
+        line-height: 1.2;
+      }
+      .stat-label {
+        font-size: 13px;
+        color: var(--muted);
+        margin-top: 2px;
+      }
+      @media (max-width: 540px) {
+        .hero-stats { gap: 24px; }
+        .stat-value { font-size: 22px; }
+      }
+
       .arch-diagram {
         margin: 18px 0 4px;
         border: 1px solid var(--border);
@@ -502,7 +527,6 @@
         transition: background 0.25s;
       }
 
-      /* SVG FLOW ANIMATION */
       .flow-line {
         stroke-dasharray: 220;
         stroke-dashoffset: 220;
@@ -668,6 +692,23 @@
         padding: 8px;
       }
 
+      .pill-learning {
+        display: flex;
+        align-items: center;
+        gap: 6px;
+        border-style: dashed;
+        opacity: 0.85;
+      }
+      .pill-tag {
+        font-size: 10px;
+        padding: 1px 6px;
+        border-radius: 20px;
+        background: rgba(240,136,62,0.15);
+        color: #f0883e;
+        text-transform: uppercase;
+        letter-spacing: 0.4px;
+        font-weight: 700;
+      }
       .menu-toggle svg { width: 24px; height: 24px; }
 
       @media (max-width: 600px) {
@@ -776,9 +817,8 @@
     </nav>
 
     <section id="home">
-      <p class="hero-greeting">Full-Stack Developer & System Integrator</p>
-      <h1 class="hero-name"><span class="accent">Diah</span></h1>
-      <p class="hero-role">Full-Stack Developer &amp; System Integrator</p>
+      <h1 class="hero-name"><span class="accent">Diah Fitirianingrum</span></h1>
+      <p class="hero-role">Full-Stack Developer &amp; Integration Engineer</p>
       <p class="hero-desc">
         I connect enterprise systems that used to run in isolation. My focus is middleware integration for 
         logistics and port terminal operations.
@@ -803,6 +843,20 @@
         </a>
 
         <a href="#contact" class="btn btn-outline">Contact Me</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat-item">
+          <span class="stat-value">4+</span>
+          <span class="stat-label">Years Experience</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-value">10+</span>
+          <span class="stat-label">Integration Gateways</span>
+        </div>
+        <div class="stat-item">
+          <span class="stat-value">0</span>
+          <span class="stat-label">Downtime Migration</span>
+        </div>
       </div>
     </section>
 
@@ -1811,6 +1865,8 @@
             <span class="pill">ReactJS</span>
             <span class="pill">JavaScript</span>
             <span class="pill">HTML / CSS</span>
+            <span class="pill pill-learning">Next.js<span class="pill-tag">in progress</span></span>
+            <span class="pill pill-learning">TypeScript<span class="pill-tag">learning</span></span>
           </div>
         </div>
         <div class="skill-group">
